@@ -3,11 +3,11 @@ import Logo from '../assets/logo.jpeg'
 import { Image } from 'astro:assets'
 ---
 <header class="fixed top-0 w-full">
-  <div class="w-full grid p-2 grid-cols-1 lg:grid-cols-2">
+  <div class="w-full grid p-2 grid-cols-1 md:grid-cols-2">
     <div class="flex items-center w-full gap-1">
       <Image src={Logo} alt='五所川原盛り上げ隊' class="w-12 h-12 rounded-full" />
     </div>
-    <div class="grid place-items-center grid-cols-2 bg-white rounded-full p-1 rounded-tr-none w-full">
+    <div class="hidden md:grid place-items-center grid-cols-2 bg-white rounded-full p-1 rounded-tr-none w-full">
       <a class="header-link-btn wave" href="#links">Links</a>
       <a class="header-link-btn wave" href="#contact">Contact</a>
     </div>
