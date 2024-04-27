@@ -1,12 +1,14 @@
 ---
 import Base, { type Props as BaseProps } from "./Base.astro"
 import Header from "../components/Header.astro"
+import Footer from '../components/Footer.astro'
 export type Props = BaseProps & {}
 ---
 
 <Base {...Astro.props}>
   <Header />
   <slot />
+  <Footer />
 </Base>
 <script>
   import { wave } from "@ns/ha"

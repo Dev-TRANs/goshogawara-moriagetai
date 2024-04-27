@@ -42,18 +42,69 @@ import Links from '../components/Links.astro'
   <div class="bg-gradient-to-b from-[#0000] to-slate-900 to-[10rem] px-5 text-white">
     <div class="text-2xl font-bold text-lime-50">Blog Posts</div>
     <div class="text-5xl font-bold">投稿</div>
+    <div class="text-lg">Ameba Blogの投稿です</div>
     <div class="py-2">
       <Posts />
     </div>
   </div>
   <div class="bg-slate-900 text-white p-5">
-    <div class="text-2xl font-bold text-lime-50">Links</div>
+    <div class="text-2xl font-bold text-lime-50" id="links">Links</div>
     <div class="text-5xl font-bold">リンク</div>
-    <div class="py-2">
+    <div class="text-lg">各種SNSへのリンクです</div>
+    <div class="py-3">
       <Links />
     </div>
   </div>
+  <div class="bg-slate-900 text-white p-5">
+    <div class="text-2xl font-bold text-lime-50" id="contact">Contact</div>
+    <div class="text-5xl font-bold">お問い合わせ</div>
+    <div class="py-3">
+      <div>お問い合わせは、メールで受け付けています。</div>
+      <div>
+        <a href="mailto:goshogawaramoriagetai@gmail.com" class="underline hover:no-underline">goshogawaramoriagetai@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="text-white text-7xl overflow-x-hidden whitespace-nowrap">
+    <div class="with-scroll">{Array(100).fill('Goshogawara').join(' ')}</div>
+    <div class="with-scroll" data-reverse='true'>{Array(100).fill('Moriagetai').join(' ')}</div>
+    <div class="with-scroll">{Array(100).fill('五所川原').join(' ')}</div>
+    <div class="with-scroll" data-reverse='true'>{Array(100).fill('盛り上げ隊').join(' ')}</div>
+  </div>
+  <div class="bg-gradient-to-b from-[#0000] to-red-50 to-[5rem] px-5 text-slate-700 py-5">
+    <div class="text-2xl font-bold text-lime-50" id="contact">Info</div>
+    <div class="text-5xl font-bold text-black">基本情報</div>
+    <div class="py-3">
+      <ul class="list-disc list-inside">
+        <li>名称: 五所川原盛り上げ隊</li>
+        <li>設立: 2023.11/20</li>
+        <li>メンバー: 3人</li>
+        <li>代表: 毛利仁哉</li>
+        <li>設立目的: 魅力溢れる五所川原をもっと盛り上げるため、多くの人に知って来て貰えるようにしていくことを目的とする。</li>
+        <li>団体スローガン: Let's take on tha challenge!</li>
+        <li>所在地: 青森県五所川原市松島町一丁目504-1</li>
+        <li>TEL: 070-9127-1295(代表)</li>
+      </ul>
+    </div>
+  </div>
 </Page>
+<script>
+  const elems: {
+    elem: HTMLDivElement
+    rect: DOMRect
+  }[] = [...document.querySelectorAll<HTMLDivElement>('.with-scroll')].map(elem => ({
+    elem,
+    rect: elem.getBoundingClientRect()
+  }))
+
+  document.addEventListener('scroll', () => {
+    for (const { elem, rect } of elems) {
+      const scroll = scrollY - rect.top
+      const x = elem.dataset.reverse ? -500 - scroll : scroll - 500
+      elem.style.transform = `translateX(${x}px)`
+    }
+  })
+</script>
 <style>
   .bg-hero {
     background-image: url(/src/assets/hero.jpg);

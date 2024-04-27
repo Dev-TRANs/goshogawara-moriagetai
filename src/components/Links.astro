@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import instagram from "../assets/brands/instagram.svg?raw";
+import instagram from "../assets/brands/Instagram_Glyph_Gradient.svg?raw"
+import threads from "../assets/brands/threads-logo-white.svg?raw"
+import x from "../assets/brands/x-logo-white.png"
 
 const links: {
   name: string;
@@ -14,26 +16,36 @@ const links: {
     id: "@goshogawara_moriagetai",
     image: instagram,
   },
+  {
+    name: "Threads",
+    link: "https://www.threads.net/goshogawara_moriagetai",
+    id: "@goshogawara_moriagetai",
+    image: threads
+  },
+  {
+    name: "X",
+    link: "https://x.com/gosyo_moriage",
+    id: "@gosyo_moriage",
+    image: x
+  }
 ];
 ---
 
-<div class="grid grid-cols-2 lg:grid-cols-4">
+<div class="flex justify-around flex-wrap gap-4">
   {
     links.map((link) => (
       <a class="wave" href={link.link}>
-        <div class="border text-center p-2 rounded-md flex flex-col">
+        <div class="text-center flex flex-col">
           <div class="flex justify-center">
             {typeof link.image === "string" ? (
               <div
                 set:html={link.image}
-                class="text-white w-24 h-24 text-center"
+                class="text-white w-12 h-12 text-center"
               />
             ) : (
-              <Image src={link.image} alt={link.name} class="w-24 h-24" />
+              <Image src={link.image} alt={link.name} class="w-12 h-12" />
             )}
           </div>
-          <div>{link.name}</div>
-          <div>{link.id}</div>
         </div>
       </a>
     ))
