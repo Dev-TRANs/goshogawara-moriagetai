@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import instagram from "../assets/brands/instagram.svg?raw";
+
+const links: {
+  name: string;
+  link: string;
+  id: string;
+  image: string | ImageMetadata;
+}[] = [
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/goshogawara_moriagetai",
+    id: "@goshogawara_moriagetai",
+    image: instagram,
+  },
+];
+---
+
+<div class="grid grid-cols-2 lg:grid-cols-4">
+  {
+    links.map((link) => (
+      <a class="wave" href={link.link}>
+        <div class="border text-center p-2 rounded-md flex flex-col">
+          <div class="flex justify-center">
+            {typeof link.image === "string" ? (
+              <div
+                set:html={link.image}
+                class="text-white w-24 h-24 text-center"
+              />
+            ) : (
+              <Image src={link.image} alt={link.name} class="w-24 h-24" />
+            )}
+          </div>
+          <div>{link.name}</div>
+          <div>{link.id}</div>
+        </div>
+      </a>
+    ))
+  }
+</div>

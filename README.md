@@ -1,3 +1,6 @@
+# 五所川原盛り上げ隊のサイト
+Using Astro!
+
 # Astro Starter Kit: Basics
 
 ```sh

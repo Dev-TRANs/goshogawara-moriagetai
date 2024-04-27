@@ -1,0 +1,23 @@
+---
+import Base, { type Props as BaseProps } from "./Base.astro"
+import Header from "../components/Header.astro"
+export type Props = BaseProps & {}
+---
+
+<Base {...Astro.props}>
+  <Header />
+  <slot />
+</Base>
+<script>
+  import { wave } from "@ns/ha"
+  const buttons =
+    document.querySelectorAll<HTMLAnchorElement>(".wave")
+  for (const button of buttons) {
+    const ha = wave({
+      color: button.dataset.hcolor ?? '#ddd',
+      duration: 500,
+      target: button,
+    })
+    button.onpointerdown = (evt) => ha.do({ pos: evt })
+  }
+</script>

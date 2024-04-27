@@ -1,0 +1,40 @@
+---
+import { parse } from 'node-html-parser'
+
+const dateFormatter = new Intl.DateTimeFormat('ja-JP', {
+  dateStyle: 'medium',
+  timeStyle: 'medium',
+  timeZone: 'Asia/Tokyo',
+})
+
+const items: {
+  title: string
+  desc: string
+  url: string
+  date: Date
+  type: 'ameblo' | 'threads'
+}[] = []
+const ameba = (async () => {
+  const rss = await fetch('http://rssblog.ameba.jp/goshogawara-moriagetai/rss.html').then(res => res.text())
+  const json = parse(rss)
+  for (const item of json.querySelectorAll('item')) {
+    items.push({
+      title: item.querySelector('title')?.innerText!,
+      desc: item.querySelector('description')?.innerText!,
+      url: item.getAttribute('rdf:about')!,
+      date: new Date(item.querySelector('dc\\:date')?.innerText!),
+      type: 'ameblo'
+    })
+  }
+})()
+await Promise.all([ameba])
+---
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+  {
+    items.map(item => (<a class="wave" href={item.url} data-hcolor="#aaa"><div class="p-2 border rounded-md">
+      <div class="text-xl font-bold">{item.title}</div>
+      <div class="text-slate-500 text-sm">{dateFormatter.format(item.date)}</div>
+      <div>{item.desc.length > 50 ? item.desc.slice(0, 50) + '...' : item.desc}</div>
+    </div></a>))
+  }
+</div>
