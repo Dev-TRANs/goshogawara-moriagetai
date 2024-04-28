@@ -2,22 +2,90 @@
 import Logo from '../assets/logo.jpeg'
 import { Image } from 'astro:assets'
 
+// @ts-ignore
+import IconMenu2 from '@tabler/icons-preact/dist/esm/icons/IconMenu2.mjs'
+
 interface Props {
   isSticky?: boolean
 }
+
+const links: {
+  name: string
+  url: string
+}[] = [
+  { name: 'About', url: '/about' },
+  { name: 'Members', url: '/members' },
+  { name: 'Posts', url: '/#posts' },
+  { name: 'Links', url: '/#links' },
+  { name: 'Contact', url: '/#contact' },
+].map(link => ({
+  name: link.name,
+  url: `${import.meta.env.BASE_URL.slice(0, -1) + link.url}`
+}))
 ---
 <header class="top-0 w-full z-30" class:list={[Astro.props.isSticky ? 'sticky' : 'fixed']}>
-  <div class="w-full grid p-3 grid-cols-1 md:grid-cols-2">
+  <div class="w-full p-3 grid grid-cols-2 md:grid-cols-3 place-items-center">
     <div class="flex items-center w-full gap-1">
-      <Image src={Logo} alt='五所川原盛り上げ隊' class="w-12 h-12 rounded-full" width={120} height={120} />
+      <a href="/#">
+        <Image src={Logo} alt='五所川原盛り上げ隊' class="w-12 h-12 rounded-full" width={120} height={120} />
+      </a>
     </div>
-    <div class="hidden md:grid place-items-center grid-cols-3 bg-white rounded-full p-1 rounded-tr-none w-full">
-      <a class="header-link-btn wave" href="/members">Members</a>
-      <a class="header-link-btn wave" href="/#links">Links</a>
-      <a class="header-link-btn wave" href="/#contact">Contact</a>
+    <div class="hidden md:grid place-items-center grid-cols-5 col-span-2 bg-white rounded-full p-1 rounded-tr-none w-full">
+      {
+        links.map(link => (<a class="header-link-btn wave" href={link.url}>{link.name}</a>))
+      }
+    </div>
+    <div class="flex md:hidden place-self-end self-center wave p-2 rounded-full">
+      <button id="menu-open">
+        <IconMenu2 size={30} />
+      </button>
+    </div>
+  </div>
+  <div class="fixed top-0 left-0 transition-all delay-200 translate-x-full h-[100dvh] w-full bg-white" id="header-menu" hidden>
+    <div class="p-4">
+      <div class="flex justify-between">
+        <div class="text-4xl font-bold p-2">Menu</div>
+        <button class="header-menu-close underline hover:no-underline p-2">Close</button>
+      </div>
+      <div class="flex flex-col gap-2 text-left py-5">
+        {
+          links.map(link => (
+            <div class="wave p-2 rounded-full header-menu-close">
+              <a class="header-link-btn" href={link.url}>{link.name}</a>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </header>
+<script>
+  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
+  const $menuOpen = document.getElementById('menu-open')
+  const $headerMenu = document.getElementById('header-menu')
+  const $headerMenuClose = document.querySelectorAll<HTMLElement>('.header-menu-close')
+  if (!($menuOpen instanceof HTMLButtonElement)) {
+    throw new TypeError('#menu-open is not HTMLButtonElement')
+  }
+  if (!($headerMenu instanceof HTMLDivElement)) {
+    throw new TypeError('#header-menu is not HTMLButtonElement')
+  }
+
+  $menuOpen.onclick = async () => {
+    $headerMenu.hidden = false
+    await sleep(0)
+    $headerMenu.classList.add('translate-x-0')
+    $headerMenu.classList.remove('translate-x-full')
+  }
+  $headerMenuClose.forEach(e => e.addEventListener('click', async () => {
+    await sleep(100)
+    $headerMenu.classList.add('translate-x-full')
+    $headerMenu.classList.remove('translate-x-0')
+    await sleep(500)
+    $headerMenu.hidden = true
+  }))
+</script>
 <style>
   .header-link-btn {
     @apply text-slate-600 p-2 rounded-full h-full text-lg font-bold w-full text-center;
