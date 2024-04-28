@@ -5,8 +5,15 @@ import IconInstagram from '@tabler/icons-preact/dist/esm/icons/IconBrandInstagra
 import IconX from '@tabler/icons-preact/dist/esm/icons/IconBrandX.mjs'
 // @ts-ignore
 import IconThreads from '@tabler/icons-preact/dist/esm/icons/IconBrandThreads.mjs'
+
+interface Props {
+  class?: string
+}
+const className = Astro.props.class
 ---
-<footer class="p-2 text-white">
+<footer class="p-2" class:list={[
+  className ?? 'text-white'
+]}>
   <div class="grid md:grid-cols-2 place-items-center">
     <div class="text-2xl font-bold">五所川原盛り上げ隊</div>
     <div>

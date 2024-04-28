@@ -2,13 +2,16 @@
 import Base, { type Props as BaseProps } from "./Base.astro"
 import Header from "../components/Header.astro"
 import Footer from '../components/Footer.astro'
-export type Props = BaseProps & {}
+export type Props = BaseProps & {
+  isStickyHeader?: boolean
+  footerClass?: string
+}
 ---
 
 <Base {...Astro.props}>
-  <Header />
+  <Header isSticky={Astro.props.isStickyHeader} />
   <slot />
-  <Footer />
+  <Footer class={Astro.props.footerClass} />
 </Base>
 <script>
   import { wave } from "@ns/ha"

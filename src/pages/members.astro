@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets'
+import Page from '../layouts/Page.astro'
+
+const members: {
+  name: string
+  avater?: ImageMetadata
+  desc: string
+}[] = [
+  {
+    name: 'あああ あああ',
+    desc: 'よろしくお願いします！'
+  }
+]
+---
+<Page title="Members | 五所川原盛り上げ隊" isStickyHeader={true} footerClass="bg-slate-700 text-white">
+  <div class="fixed text-6xl members-title z-20 p-2 text-white w-full">
+    <div class="font-bold">Members</div>
+    <hr class="my-1" />
+  </div>
+  <div class="w-full h-[100dvh] bg-blue-500 z-10 bg-out fixed top-0 left-0"></div>
+  <div class="p-5">
+    <div class="text-5xl z-50 font-bold">Members</div>
+    <div class="py-1">五所川原盛り上げ隊のメンバー一覧です。</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 py-3">
+      {
+        members.map(member => (<div class="flex flex-col justify-center text-center">
+          <div class="flex justify-center w-full">
+            <div class="w-24 h-24 rounded-full border">
+              {
+                member.avater && <Image src={member.avater ?? ''} alt='Icon' class="w-full h-full" />
+              }
+            </div>
+          </div>
+          <div class="font-bold">{member.name}</div>
+          <div class="text-slate-500">{member.desc}</div>
+        </div>))
+      }
+    </div>
+  </div>
+</Page>
+<style>
+  @keyframes big-title {
+    0% {
+      transform: translate(0%, 30dvh);
+    }
+    30% {
+      transform: translate(0%, 30dvh);
+    }
+
+    100% {
+      transform: translate(-200%, 30dvh);
+    }
+  }
+  .members-title {
+    animation-name: big-title;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes bg-out {
+    0% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    30% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+  }
+  .bg-out {
+    animation-name: bg-out;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    transform-origin: bottom center;
+  }
+</style>
