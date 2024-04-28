@@ -1,19 +1,7 @@
 ---
-import { Image } from 'astro:assets'
 import Page from '../layouts/Page.astro'
-
-const members: {
-  name: string
-  avater?: ImageMetadata
-  desc: string
-}[] = [
-  {
-    name: 'あああ あああ',
-    desc: 'よろしくお願いします！'
-  }
-]
 ---
-<Page title="Members | 五所川原盛り上げ隊" isStickyHeader={true} footerClass="bg-slate-700 text-white">
+<Page title="About | 五所川原盛り上げ隊" isStickyHeader={true} footerClass="bg-slate-700 text-white">
   <div class="fixed text-6xl members-title z-20 p-2 text-white w-full">
     <div class="font-bold">About</div>
     <hr class="my-1" />
