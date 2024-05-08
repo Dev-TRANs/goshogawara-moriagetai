@@ -6,10 +6,16 @@ const members: {
   name: string
   avater?: ImageMetadata
   desc: string
+  post?: string
 }[] = [
   {
-    name: 'あああ あああ',
-    desc: 'よろしくお願いします！'
+    name: '毛利 仁哉',
+    post: '代表',
+    desc: '皆さんこんにちは！五所川原盛り上げ隊代表の毛利です！私はこの魅力溢れる街、五所川原をもっと多くの人に知って、見て、来てもらえるようなところにしたいという思いからこの団体を設立いたしました。少子高齢化の波にのまれ、地方は厳しくなっていく時代ですがそんな時こそ私たち学生にもできるようなSNSを通じた魅力発信で少しでも地域に貢献できればと思います。全力でこの活動してまいりますのでどうかよろしくお願いします！！'
+  },
+  {
+    name: 'なみ',
+    desc: '地域活性を目標にしてます！よろしくお願いします！'
   }
 ]
 ---
@@ -24,20 +30,44 @@ const members: {
     <div class="py-1">五所川原盛り上げ隊のメンバー一覧です。</div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 py-3">
       {
-        members.map(member => (<div class="flex flex-col justify-center text-center">
+        members.map(member => (<div>
           <div class="flex justify-center w-full">
-            <div class="w-24 h-24 rounded-full border">
+            <div class="w-24">
               {
                 member.avater && <Image src={member.avater ?? ''} alt='Icon' class="w-full h-full" />
               }
             </div>
           </div>
-          <div class="font-bold">{member.name}</div>
-          <div class="text-slate-500">{member.desc}</div>
+          <div class="font-bold text-2xl">{member.name}</div>
+          <div class="text-slate-600 text-lg">{member.post ?? 'No Post'}</div>
+          <div class="text-slate-500 text-sm">
+            {
+              member.desc.length > 40 ? <>
+                <div>{member.desc.slice(0, 40)}</div>
+                <div><button class="text-black" onclick={`
+                  (() => {
+                    window.showMoreDialog(\`${member.desc}\`)
+                  })()
+                `}>Show more</button></div>
+              </> : member.desc
+            }
+          </div>
         </div>))
       }
     </div>
   </div>
+
+  <dialog class="fixed top-0 left-0 w-full z-40 h-[100dvh] bg-[#000a]" id="show-more-dialog">
+    <div class="bg-white m-4 rounded-md border p-2">
+      <form method="dialog">
+        <div class="flex justify-between items-center">
+          <div class="text-2xl">Content</div>
+          <button class="text-lg font-bold">Close</button>
+        </div>
+      </form>
+      <div id="show-more-content" class="py-2" />
+    </div>
+  </dialog>
 </Page>
 <style>
   @keyframes big-title {
@@ -79,3 +109,12 @@ const members: {
     transform-origin: bottom center;
   }
 </style>
+<script>
+  const $showMoreDialog = document.getElementById('show-more-dialog') as HTMLDialogElement
+  const $showMoreContent = document.getElementById('show-more-content') as HTMLDivElement
+  // 悪い子
+  (window as any).showMoreDialog = (text: string) => {
+    $showMoreDialog.show()
+    $showMoreContent.textContent = text
+  }
+</script>
