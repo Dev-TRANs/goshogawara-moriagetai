@@ -34,7 +34,7 @@ const history: {
         <p>また、当団体の運営メンバーを随時募集しておりますので興味のある方はぜひお声掛けください！</p>
         <p>メッセージの送信方法はお問い合わせにあるメールアドレスからメールを送るかInstagramやXなどのSNSのDMに直接送ってください。</p>
       </div>
-      <div class="mt-2 [&>p]:mt-1">
+      <div class="mt-3 [&>p]:mt-1">
         <p class="text-3xl font-bold">五所川原市とは？</p>
         <p>五所川原市は青森県西部にある市で津軽半島中南部に位置します。人口は令和5年10月時点で50803人、青森県で6番目の人口を誇る都市です。</p>
         <p>漆川地区には大きな工業団地が設置されており、工業が発展しています。また、五所川原市は古くから商業都市として発展してきましたが五所川原駅周辺に連立していた百貨店は軒並み閉店してしまい、現在はエルムの街を中心として経済が回っています。</p>
@@ -43,14 +43,14 @@ const history: {
         <p>旧市浦村はシジミで有名な十三湖があり、毎年厳しい審査の上通ったシジミを全国に出荷しています。また、平安時代には十三湊として北前船の交流の拠点ともなりました。</p>
         <p>市の中心にはJR五能線と五所川原中心街と中泊町を結ぶ本州最北の私鉄、津軽鉄道が走っており、交通も発達しています。夏には五所川原立佞武多が行なわれ毎年多くの観光客が訪れます。他にも虫おくりという伝統行事があり奥津軽虫と火の祭りとして毎年取り行われています。</p>⁡
       </div>
-      <div class="mt-2">
+      <div class="mt-3">
         <p class="text-3xl font-bold">年表</p>
         <div class="relative overflow-x-auto">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <tbody>
               {
                 history.map(event => (<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-right dark:text-white">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-right dark:text-white w-3/4 min-w-80">
                     {event.date}
                   </th>
                   <td class="px-6 py-4">
