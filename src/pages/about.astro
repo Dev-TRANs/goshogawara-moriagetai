@@ -1,5 +1,19 @@
 ---
 import Page from '../layouts/Page.astro'
+
+const history: {
+  date: string
+  content: string
+}[] = [
+  {
+    date: '令和５年１１月２０日',
+    content: '設立。公式Instagram開設。'
+  },
+  {
+    date: '１１月２１日',
+    content: '「五所川原グルメ旅」連載開始。'
+  }
+]
 ---
 <Page title="About | 五所川原盛り上げ隊" description="五所川原盛り上げ隊についての詳細情報です。" isStickyHeader={true} footerClass="bg-slate-700 text-white">
   <div class="fixed text-6xl members-title z-20 p-2 text-white w-full">
@@ -34,22 +48,16 @@ import Page from '../layouts/Page.astro'
         <div class="relative overflow-x-auto">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    令和５年１１月２０日
-                </th>
-                <td class="px-6 py-4">
-                    設立。公式Instagram開設。
-                </td>
-              </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    令和５年１１月２０日
-                </th>
-                <td class="px-6 py-4">
-                    設立。公式Instagram開設。
-                </td>
-              </tr>
+              {
+                history.map(event => (<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-right dark:text-white">
+                    {event.date}
+                  </th>
+                  <td class="px-6 py-4">
+                    {event.content}
+                  </td>
+                </tr>))
+              }
             </tbody>
           </table>
         </div>
