@@ -65,7 +65,7 @@ const history: {
           <p>メッセージの送信方法はお問い合わせにあるメールアドレスからメールを送るかInstagramやXなどのSNSのDMに直接送ってください。</p> 
         </div>
       </div>
-      <div class="mt-3 [&>p]:mt-1 [&>p]:text-slate-500">
+      <div class="mt-3 [&>p]:mt-1">
         <p class="text-3xl font-bold">五所川原市とは？</p>
         <p class="text-lg text-slate-600">What is Goshogawara?</p>
         <div class="[&>p]:text-slate-500 text-sm">
@@ -81,11 +81,11 @@ const history: {
         <p class="text-3xl font-bold">年表</p>
         <p class="text-lg text-slate-600">History</p>
         <div class="relative overflow-x-auto">
-          <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <table class="w-full text-sm text-left rtl:text-right text-slate-500 dark:text-slate-400">
             <tbody>
               {
-                history.map(event => (<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-right dark:text-white w-1/4 min-w-40">
+                history.map(event => (<tr class="bg-white border-b dark:bg-slate-800 dark:border-slate-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap text-right dark:text-white w-1/4 min-w-40">
                     {event.date}
                   </th>
                   <td class="px-6 py-4">
