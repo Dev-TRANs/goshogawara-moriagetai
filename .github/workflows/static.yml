@@ -4,11 +4,13 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    - cron:  "15 6 */7 * *"
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  # pages: write
+  # id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -19,26 +21,33 @@ concurrency:
 jobs:
   # Single deploy job since we're just deploying
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # environment:
+      # name: github-pages
+      # url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      # - name: Setup Pages
+        # uses: actions/configure-pages@v5
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
       - name: Install deps
         run: bun i
       - name: Build
-        run: bun run build --base=/goshokawahara-moriagetai/
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
+        run: bun run build
+        #--base=/goshokawahara-moriagetai/
+      # - name: Upload artifact
+        # uses: actions/upload-pages-artifact@v3
+        # with:
           # Upload entire repository
-          path: './dist'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          # path: './dist'
+      # - name: Deploy to GitHub Pages
+        # id: deployment
+        # uses: actions/deploy-pages@v4
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=goshomoritai
