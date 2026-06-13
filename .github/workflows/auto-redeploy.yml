@@ -1,0 +1,12 @@
+name: Auto Redeploy
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  "0 9 * * 1"
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Redeploy
+        run: curl -X POST "${{ secrets.CF_DEPLOY_HOOK_URL }}"
