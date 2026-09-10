@@ -9,8 +9,11 @@ import Links from '../components/Links.astro'
   <div
     class="w-full flex items-center p-5 text-white font-extrabold text-6xl h-[100dvh] leading-relaxed"
   >
-    Let's take
-    <br />on the challenge!
+    つくろう。
+    <br />僕らの新しい<wbr />五所川原を。
+    <div class="text-xl leading-relaxed py-2 lg:max-w-[80%] desc-text">
+      <p>私たちは、五所川原に暮らす人、訪れる人、挑戦する人とともに、<br />今までになかった価値と景色をつくっていきます。</p>
+    </div>
   </div>
   <div class="text-white p-5">
     {/* About */}
@@ -63,6 +66,9 @@ import Links from '../components/Links.astro'
       <div>
         <a href="mailto:goshogawaramoriagetai@gmail.com" class="underline hover:no-underline">goshogawaramoriagetai@gmail.com</a>
       </div>
+      <div>
+        運営：<a href="https://5moriage.com/" class="underline hover:no-underline">株式会社五所川原盛り上げ隊</a>
+      </div>
     </div>
   </div>
   <div class="text-white text-7xl overflow-hidden whitespace-nowrap">
@@ -70,22 +76,6 @@ import Links from '../components/Links.astro'
     <div class="with-scroll" data-reverse='true'>{Array(100).fill('Moriagetai').join(' ')}</div>
     <div class="with-scroll">{Array(100).fill('五所川原').join(' ')}</div>
     <div class="with-scroll" data-reverse='true'>{Array(100).fill('盛り上げ隊').join(' ')}</div>
-  </div>
-  <div class="bg-gradient-to-b from-[#0000] to-red-50 to-[5rem] px-5 text-slate-700 py-5">
-    <div class="text-2xl font-bold text-lime-50" id="contact">Info</div>
-    <div class="text-5xl font-bold text-black">基本情報</div>
-    <div class="py-3">
-      <ul class="list-disc list-inside">
-        <li>名称: 五所川原盛り上げ隊</li>
-        <li>設立: 2023.11/20</li>
-        <li>メンバー: 3人</li>
-        <li>代表: 毛利仁哉</li>
-        <li>設立目的: 魅力溢れる五所川原をもっと盛り上げるため、多くの人に知って来て貰えるようにしていくことを目的とする。</li>
-        <li>団体スローガン: Let's take on the challenge!</li>
-        <li>所在地: 青森県五所川原市松島町一丁目504-1</li>
-        <li>TEL: 070-9127-1295(代表)</li>
-      </ul>
-    </div>
   </div>
 </Page>
 <script>
