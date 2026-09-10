@@ -4,38 +4,42 @@ import Posts from '../components/Posts.astro'
 import Links from '../components/Links.astro'
 ---
 
-<Page title="五所川原盛り上げ隊" description='五所川原市をもっと盛り上がるために作られた組織、五所川原盛り上げ隊'>
-  <div class="fixed w-full bg-black h-[100dvh] bg-cover bg-hero -z-10 brightness-75" />
-		<div
-		class="w-full flex flex-col items-start justify-center p-5 text-white font-extrabold text-6xl h-[100dvh] leading-relaxed"
-	>
-		<div>
-			つくろう。
-			<br />
-			僕らの新しい
-			<br />
-			五所川原を。
-		</div>
-		<div class="font-normal text-xl leading-relaxed py-2 desc-text">
-			<p>
-				私たちは、五所川原に暮らす人、訪れる人、挑戦する人とともに、<br />
-				今までになかった価値と景色をつくっていきます。
-			</p>
-		</div>
-	</div>
-  <div class="text-white p-5">
+<Page
+  title="五所川原盛り上げ隊"
+  description="五所川原市をもっと盛り上がるために作られた組織、五所川原盛り上げ隊"
+>
+  <div class="fixed -z-10 h-[100dvh] w-full bg-hero bg-black bg-cover brightness-75"></div>
+  <div
+    class="flex h-[100dvh] w-full flex-col items-start justify-center p-5 text-6xl font-extrabold leading-relaxed text-white"
+  >
+    <div>
+      つくろう。
+      <br />
+      僕らの新しい
+      <br />
+      五所川原を。
+    </div>
+    <div class="desc-text py-2 text-xl font-normal leading-relaxed">
+      <p>
+        私たちは、五所川原に暮らす人、訪れる人、挑戦する人とともに、<br />
+        今までになかった価値と景色をつくっていきます。
+      </p>
+    </div>
+  </div>
+  <div class="p-5 text-white">
     {/* About */}
     <div class="text-2xl font-bold text-lime-50">Target</div>
     <div class="text-5xl font-bold">目的</div>
-    <div class="text-xl leading-relaxed py-1 lg:max-w-[80%] desc-text">
-      <p>魅力溢れる五所川原をもっと盛り上げるため<br />そして多くの人に知って、来てもらえるようにしていくことを目的としています。</p>
+    <div class="desc-text py-1 text-xl leading-relaxed lg:max-w-[80%]">
+      <p>
+        魅力溢れる五所川原をもっと盛り上げるため<br />
+        そして多くの人に知って、来てもらえるようにしていくことを目的としています。
+      </p>
       <p>
         この五所川原をもっともっと盛り上げたい、その思いから生まれたのが五所川原盛り上げ隊です。
         青森県と五所川原市の魅力をどんどん発信していきます。
       </p>
-      <p>
-        そして、地域の活気をどんどん良いものにしていこうと私たちは考えています。
-      </p>
+      <p>そして、地域の活気をどんどん良いものにしていこうと私たちは考えています。</p>
       {/* ここから文章思いつかないのでChatGPTに生成してもらった */}
       <p>
         地域の魅力を広く発信するために、SNSやウェブサイト、地域イベントなどを活用して情報発信を行っています。
@@ -50,7 +54,7 @@ import Links from '../components/Links.astro'
       </p>
     </div>
   </div>
-  <div class="bg-gradient-to-b from-[#0000] to-slate-900 to-[10rem] px-5 text-white pt-16" id="posts">
+  <div class="bg-gradient-to-b from-[#0000] to-slate-900 to-[10rem] px-5 pt-16 text-white" id="posts">
     <div class="text-2xl font-bold text-lime-50">Blog Posts</div>
     <div class="text-5xl font-bold">投稿</div>
     <div class="text-lg">Ameba Blogの投稿です</div>
@@ -58,7 +62,7 @@ import Links from '../components/Links.astro'
       <Posts />
     </div>
   </div>
-  <div class="bg-slate-900 text-white p-5 pt-16" id="links">
+  <div class="bg-slate-900 p-5 pt-16 text-white" id="links">
     <div class="text-2xl font-bold text-lime-50">Links</div>
     <div class="text-5xl font-bold">リンク</div>
     <div class="text-lg">各種SNSへのリンクです</div>
@@ -66,33 +70,38 @@ import Links from '../components/Links.astro'
       <Links />
     </div>
   </div>
-  <div class="bg-slate-900 text-white p-5 pt-16" id="contact">
+  <div class="bg-slate-900 p-5 pt-16 text-white" id="contact">
     <div class="text-2xl font-bold text-lime-50">Contact</div>
     <div class="text-5xl font-bold">お問い合わせ</div>
     <div class="py-3">
       <div>お問い合わせは、メールで受け付けています。</div>
       <div>
-        <a href="mailto:goshogawaramoriagetai@gmail.com" class="underline hover:no-underline">goshogawaramoriagetai@gmail.com</a>
+        <a href="mailto:goshogawaramoriagetai@gmail.com" class="underline hover:no-underline"
+          >goshogawaramoriagetai@gmail.com</a
+        >
       </div>
       <div>
-        運営：<a href="https://5moriage.com/" class="underline hover:no-underline">株式会社五所川原盛り上げ隊</a>
+        運営：<a href="https://5moriage.com/" class="underline hover:no-underline"
+          >株式会社五所川原盛り上げ隊</a
+        >
       </div>
     </div>
   </div>
-  <div class="text-white text-7xl overflow-hidden whitespace-nowrap">
+  <div class="whitespace-nowrap overflow-hidden text-7xl text-white">
     <div class="with-scroll">{Array(100).fill('Goshogawara').join(' ')}</div>
-    <div class="with-scroll" data-reverse='true'>{Array(100).fill('Moriagetai').join(' ')}</div>
+    <div class="with-scroll" data-reverse="true">{Array(100).fill('Moriagetai').join(' ')}</div>
     <div class="with-scroll">{Array(100).fill('五所川原').join(' ')}</div>
-    <div class="with-scroll" data-reverse='true'>{Array(100).fill('盛り上げ隊').join(' ')}</div>
+    <div class="with-scroll" data-reverse="true">{Array(100).fill('盛り上げ隊').join(' ')}</div>
   </div>
 </Page>
+
 <script>
   const elems: {
     elem: HTMLDivElement
     rect: DOMRect
-  }[] = [...document.querySelectorAll<HTMLDivElement>('.with-scroll')].map(elem => ({
+  }[] = [...document.querySelectorAll<HTMLDivElement>('.with-scroll')].map((elem) => ({
     elem,
-    rect: elem.getBoundingClientRect()
+    rect: elem.getBoundingClientRect(),
   }))
 
   document.addEventListener('scroll', () => {
@@ -103,6 +112,7 @@ import Links from '../components/Links.astro'
     }
   })
 </script>
+
 <style>
   .bg-hero {
     background-image: url(/src/assets/hero.jpg);
